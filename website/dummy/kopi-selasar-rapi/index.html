@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopi Selasar — Kedai Kopi & Ruang Santai</title>
+<meta name="description" content="Kopi Selasar, kedai kopi rumahan. Menu, jam buka, dan pesan langsung via WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #2e1e14;
+    --brown-2: #4a3222;
+    --cream: #faf3e8;
+    --cream-2: #f1e6d4;
+    --paper: #fffcf7;
+    --rust: #c4632f;
+    --rust-soft: #e8a97a;
+    --ink: #241a12;
+    --ink-soft: #6b5c4c;
+    --line: #e7d9c4;
+    --radius-lg: 20px;
+    --radius-md: 13px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Manrope", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  nav.topbar { position: sticky; top: 0; z-index: 50; background: rgba(46,30,20,0.94); backdrop-filter: blur(8px); }
+  nav.topbar .inner { max-width: 640px; margin: 0 auto; padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 9px; color: #fff; text-decoration: none; font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; }
+  .brand .mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--rust), var(--rust-soft)); display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .nav-cta { background: var(--rust); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+
+  header.hero { position: relative; background: radial-gradient(ellipse 120% 80% at 50% -10%, var(--brown-2), var(--brown) 65%); color: #fff; padding: 56px 0 70px; text-align: center; overflow: hidden; }
+  header.hero .glow { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(196,99,47,0.4), transparent 70%); top: -160px; right: -120px; pointer-events: none; }
+  .hero-inner { position: relative; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: var(--rust-soft); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 13px; border-radius: 999px; margin-bottom: 20px; }
+  h1.headline { font-size: clamp(30px, 8vw, 42px); line-height: 1.14; }
+  h1.headline em { font-style: italic; color: var(--rust-soft); }
+  .hero-inner p.sub { max-width: 420px; margin: 16px auto 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,0.75); }
+  .hero-ctas { display: flex; flex-direction: column; gap: 10px; max-width: 300px; margin: 28px auto 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; border: none; }
+  .btn-primary { background: var(--rust); color: #fff; box-shadow: 0 10px 28px -10px rgba(196,99,47,0.6); }
+  .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+  .hours-strip { display: flex; justify-content: center; gap: 24px; margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); flex-wrap: wrap; }
+  .hours-strip .item { text-align: left; }
+  .hours-strip .item .lbl { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+  .hours-strip .item .val { font-family: "Fraunces", serif; font-size: 17px; color: var(--rust-soft); }
+
+  section { padding: 56px 0; }
+  .section-head { margin-bottom: 30px; text-align: center; }
+  .kicker { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); margin-bottom: 8px; }
+  h2.section-title { font-size: clamp(24px, 6vw, 30px); }
+  p.section-lede { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; margin: 10px auto 0; max-width: 42ch; }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 420px) { .menu-grid { grid-template-columns: 1fr; } }
+  .menu-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .menu-card .thumb { height: 92px; background: linear-gradient(135deg, var(--rust-soft), var(--rust)); position: relative; }
+  .menu-card .thumb::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 55%); }
+  .menu-card .meta { padding: 12px 14px 14px; }
+  .menu-card h3 { font-family: "Manrope"; font-size: 14.5px; font-weight: 700; }
+  .menu-card p { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-soft); }
+  .menu-card .price { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 800; color: var(--rust); }
+
+  section.about { background: var(--cream-2); }
+  .about-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 22px; display: grid; gap: 16px; }
+  .about-row { display: flex; gap: 12px; align-items: flex-start; }
+  .about-row .ico { width: 34px; height: 34px; flex-shrink: 0; border-radius: 9px; background: var(--brown); display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .about-row h3 { font-family: "Manrope"; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .about-row p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  section.testi .testi-list { display: grid; gap: 12px; }
+  .testi-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 20px; }
+  .testi-card p.quote { margin: 0; font-size: 14px; color: var(--ink); line-height: 1.6; font-style: italic; }
+  .testi-card .who { margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--rust); }
+
+  section.cta-final { background: var(--brown); color: #fff; text-align: center; }
+  section.cta-final h2 { color: #fff; }
+  section.cta-final p { color: rgba(255,255,255,0.7); font-size: 14.5px; margin: 10px auto 0; max-width: 40ch; }
+  section.cta-final .btn { margin: 24px auto 0; max-width: 260px; }
+
+  footer.site-footer { background: var(--brown); color: rgba(255,255,255,0.5); text-align: center; padding: 20px 0 34px; font-size: 12px; }
+
+  .badge-dummy { position: fixed; bottom: 14px; right: 14px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 700; padding: 7px 12px; border-radius: 999px; opacity: 0.55; z-index: 99; font-family: "Manrope"; }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="inner">
+    <a class="brand" href="#top"><span class="mark">☕</span> Kopi Selasar</a>
+    <a class="nav-cta" href="#pesan">Pesan</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Kedai Kopi Rumahan</span>
+    <h1 class="headline">Ngopi santai, <em>racikan sendiri</em>.</h1>
+    <p class="sub">Kopi susu, manual brew, dan camilan rumahan. Duduk santai di selasar, atau pesan lewat WhatsApp buat dibawa pulang.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#pesan">Pesan via WhatsApp</a>
+      <a class="btn btn-ghost" href="#menu">Lihat menu</a>
+    </div>
+    <div class="hours-strip">
+      <div class="item"><span class="lbl">Buka</span><span class="val">08.00–21.00</span></div>
+      <div class="item"><span class="lbl">Hari</span><span class="val">Selasa–Minggu</span></div>
+      <div class="item"><span class="lbl">Lokasi</span><span class="val">Jl. Selasar No. 12</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Menu Favorit</span>
+      <h2 class="section-title">Yang paling sering dipesan.</h2>
+      <p class="section-lede">Menu lengkap ada di tempat, ini beberapa andalan kami.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="thumb"></div><div class="meta"><h3>Kopi Susu Gula Aren</h3><p>Espresso, susu segar, gula aren</p><span class="price">Rp 18.000</span></div></div>
+      <div class="menu-card"><div class="thumb" style="background:linear-gradient(135deg,#d9c19a,#8a6a3f)"></div><div class="meta"><h3>Manual Brew V60</h3><p>Biji lokal pilihan, single origin</p><span class="price">Rp 22.000</span></div></div>
+      <div class="menu-card"><div class="thumb" style="background:linear-gradient(135deg,#e8c9a0,#c4632f)"></div><div class="meta"><h3>Roti Bakar Cokelat</h3><p>Roti panggang, cokelat leleh, keju</p><span class="price">Rp 15.000</span></div></div>
+      <div class="menu-card"><div class="thumb" style="background:linear-gradient(135deg,#f1e0c4,#b98a52)"></div><div class="meta"><h3>Pisang Goreng Selasar</h3><p>Pisang kepok, madu, wijen</p><span class="price">Rp 12.000</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Kenapa Mampir</span>
+      <h2 class="section-title">Kedai kecil, rasa niat.</h2>
+    </div>
+    <div class="about-card">
+      <div class="about-row"><div class="ico">🌱</div><div><h3>Biji kopi lokal</h3><p>Diseduh dari roastery lokal, diganti tiap 2 minggu biar selalu segar.</p></div></div>
+      <div class="about-row"><div class="ico">🪑</div><div><h3>Tempat duduk santai</h3><p>Selasar kecil buat ngobrol atau kerja ringan, wifi tersedia.</p></div></div>
+      <div class="about-row"><div class="ico">📦</div><div><h3>Bisa dibawa pulang</h3><p>Tinggal chat WA, pesanan disiapkan dan bisa diambil langsung.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="testi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Kata Pelanggan</span>
+      <h2 class="section-title">Bukan basa-basi.</h2>
+    </div>
+    <div class="testi-list">
+      <div class="testi-card"><p class="quote">"Kopi susu gula arennya pas, ga terlalu manis. Tempatnya juga adem buat kerja sebentar."</p><div class="who">— Dinda, pelanggan tetap</div></div>
+      <div class="testi-card"><p class="quote">"Sering pesan buat dibawa ke kantor, prosesnya cepat tinggal chat WA aja."</p><div class="who">— Reza</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="pesan">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--rust-soft)">Pesan Sekarang</span>
+    <h2 class="section-title">Mau ngopi atau bawa pulang?</h2>
+    <p>Chat langsung, kami balas dan siapkan pesanan kamu.</p>
+    <a class="btn btn-primary" href="https://wa.me/6281200000000?text=Halo%20Kopi%20Selasar%2C%20saya%20mau%20pesan">Chat WhatsApp</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">Kopi Selasar — Jl. Selasar No. 12. Buka Selasa–Minggu, 08.00–21.00.</div>
+</footer>
+
+<span class="badge-dummy">Contoh project — dummy</span>
+
+</body>
+</html>

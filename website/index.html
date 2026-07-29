@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bikinin.id: Bikinin website & app kamu, cepat dan rapi</title>
+<meta name="description" content="Jasa pembuatan website dan aplikasi custom. Cepat, transparan, mulai dari Rp 1jt. Chat langsung sama yang ngerjain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1730;
+    --navy-2: #13234a;
+    --navy-line: rgba(255,255,255,0.14);
+    --blue: #3b63ff;
+    --blue-bright: #6b8bff;
+    --gold: #e2a63b;
+    --gold-soft: #f6e6c4;
+    --cream: #faf6ef;
+    --cream-2: #f2ece0;
+    --paper: #fffdf9;
+    --ink: #14171f;
+    --ink-soft: #5c6270;
+    --ink-faint: #8a8f9c;
+    --line: #e6e0d3;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 9px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--gold); color: var(--navy); }
+
+  /* ---------- reveal on scroll ---------- */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  [data-reveal].in-view { opacity: 1; transform: translateY(0); }
+
+  /* ---------- nav ---------- */
+  nav.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11,23,48,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--navy-line);
+  }
+  nav.topbar .inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #fff;
+    text-decoration: none;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 16.5px;
+  }
+  .brand img { width: 28px; height: 28px; border-radius: 8px; display: block; }
+  .nav-links {
+    display: none;
+    gap: 22px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  @media (min-width: 640px) { .nav-links { display: flex; } }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    position: relative;
+    background: radial-gradient(ellipse 120% 80% at 50% -10%, var(--navy-2), var(--navy) 60%);
+    color: #fff;
+    padding: 56px 0 84px;
+    overflow: hidden;
+  }
+  header.hero .blueprint {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 20%, transparent 75%);
+  }
+  header.hero .glow {
+    position: absolute;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,99,255,0.35), transparent 70%);
+    top: -180px; right: -140px;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; text-align: center; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--navy-line);
+    color: var(--gold-soft);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 13px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  h1.headline {
+    font-size: clamp(32px, 8vw, 44px);
+    line-height: 1.12;
+    color: #fff;
+  }
+  h1.headline em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .hero-inner p.sub {
+    max-width: 440px;
+    margin: 18px auto 0;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.78);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+    margin: 30px auto 0;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    box-shadow: 0 10px 30px -10px rgba(226,166,59,0.6);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(226,166,59,0.75); }
+  .btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--navy-line);
+  }
+  .trust-item { text-align: left; }
+  .trust-item .num {
+    font-family: "Fraunces", serif;
+    font-size: 22px;
+    color: var(--gold-soft);
+    display: block;
+  }
+  .trust-item .lbl {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+
+  /* ---------- section shell ---------- */
+  section { padding: 68px 0; }
+  .section-head { margin-bottom: 36px; }
+  .kicker {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  h2.section-title {
+    font-size: clamp(26px, 6vw, 32px);
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  p.section-lede {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-top: 10px;
+    max-width: 46ch;
+  }
+
+  /* ---------- why us ---------- */
+  section.why { background: var(--cream); }
+  .why-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .why-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .why-card .ico {
+    width: 38px; height: 38px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .why-card .ico svg { width: 18px; height: 18px; stroke: var(--gold-soft); }
+  .why-card h3 { font-size: 15.5px; font-weight: 700; font-family: "Manrope"; margin-bottom: 4px; }
+  .why-card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ---------- portfolio ---------- */
+  section.work { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  section.work .kicker { color: var(--gold-soft); }
+  section.work h2.section-title { color: #fff; }
+  section.work p.section-lede { color: rgba(255,255,255,0.62); }
+
+  .work-scroll-wrap { position: relative; }
+  .work-scroll {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    margin: 0 -22px;
+    padding: 4px 22px 14px;
+    scroll-snap-type: x mandatory;
+  }
+  .work-scroll::-webkit-scrollbar { display: none; }
+  .work-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--navy-line);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    z-index: 5;
+    transition: background 0.2s;
+  }
+  .work-nav:hover { background: rgba(255,255,255,0.2); }
+  .work-nav.prev { left: -6px; }
+  .work-nav.next { right: -6px; }
+  @media (min-width: 640px) {
+    .work-nav.prev { left: -18px; }
+    .work-nav.next { right: -18px; }
+  }
+  .mock-card {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 250px;
+    background: var(--navy-2);
+    border: 1px solid var(--navy-line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease), border-color 0.2s;
+  }
+  .mock-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.3); }
+  .mock-browser { padding: 9px 10px; display: flex; gap: 5px; border-bottom: 1px solid var(--navy-line); }
+  .mock-browser i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); display: block; }
+  .mock-screen {
+    height: 132px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mock-screen .bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.14); }
+  .mock-screen .bar.w60 { width: 60%; }
+  .mock-screen .bar.w40 { width: 40%; }
+  .mock-screen .block { flex: 1; border-radius: 8px; margin-top: 4px; }
+  .mock-meta { padding: 13px 14px 16px; }
+  .mock-meta .tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 6px;
+  }
+  .mock-meta h3 { font-family: "Manrope"; font-size: 14.5px; font-weight: 700; margin: 0 0 3px; }
+  .mock-meta p { margin: 0; font-size: 12.5px; color: rgba(255,255,255,0.55); }
+
+  .work-note {
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ---------- work mini-recreations ---------- */
+  .mock-screen { background: #0e0e10; }
+
+  .mock-ledger { background: radial-gradient(ellipse 100% 100% at 50% 0%, #13234a, #0b1730); position: relative; }
+  .ml-head { font-family: "Fraunces", serif; font-style: italic; font-size: 14px; color: var(--gold-soft); }
+  .ml-stats { display: flex; gap: 16px; margin-top: 10px; }
+  .ml-stats > div { display: flex; flex-direction: column; gap: 2px; }
+  .ml-stats .lbl { font-size: 9.5px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.03em; }
+  .ml-stats .val { font-size: 13px; font-weight: 700; color: #fff; }
+  .ml-stats .val.up { color: #6cd39c; }
+  .ml-chart { position: absolute; bottom: 8px; left: 14px; right: 14px; height: 30px; width: calc(100% - 28px); }
+
+  .mock-cashflow { background: #0b0f0d; }
+  .cf-head { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; color: #fff; }
+  .cf-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; }
+  .cf-tiles { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .cf-tile { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.04); border-radius: 6px; padding: 5px 8px; }
+  .cf-tile .lbl { font-size: 10px; color: rgba(255,255,255,0.5); }
+  .cf-tile .val { font-size: 11.5px; font-weight: 700; color: #fff; }
+  .cf-tile .val.up { color: #22c55e; }
+
+  .mock-portfolio { background: #0b1015; display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+  .pf-row { display: flex; align-items: center; gap: 8px; }
+  .pf-ico { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; font-weight: 700; flex-shrink: 0; }
+  .pf-name { font-size: 12px; color: #fff; font-weight: 600; flex: 1; }
+  .pf-chg { font-size: 11px; font-weight: 700; }
+  .pf-chg.up { color: #6cd39c; }
+  .pf-chg.down { color: #e2695f; }
+
+  .mock-erp { background: #10141c; display: flex; flex-direction: column; justify-content: space-between; }
+  .erp-flow { display: flex; align-items: center; gap: 4px; font-size: 9px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+  .erp-step { background: rgba(255,255,255,0.06); padding: 3px 6px; border-radius: 5px; }
+  .erp-step.active { background: var(--gold); color: var(--navy); font-weight: 700; }
+  .erp-arrow { color: rgba(255,255,255,0.3); }
+  .erp-bars { display: flex; align-items: flex-end; gap: 6px; height: 46px; }
+  .erp-bar { flex: 1; background: linear-gradient(180deg, var(--blue-bright), var(--blue)); border-radius: 3px 3px 1px 1px; }
+
+  .mock-chat { background: #0d1117; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .chat-bubble { font-size: 9.5px; line-height: 1.35; padding: 5px 8px; border-radius: 8px; max-width: 85%; }
+  .chat-bubble.bot { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); align-self: flex-start; border-bottom-left-radius: 2px; }
+  .chat-bubble.user { background: var(--blue); color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+  .mock-habit { background: #100e0b; display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+  .hb-row { display: flex; align-items: center; gap: 8px; }
+  .hb-check { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+  .hb-check.done { background: var(--gold); border-color: var(--gold); }
+  .hb-name { font-size: 11.5px; color: #fff; flex: 1; }
+  .hb-count { font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 600; }
+
+  /* ---------- pricing ---------- */
+  section.pricing { background: var(--cream-2); }
+  .launch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: var(--gold-soft);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 999px;
+    line-height: 1.4;
+  }
+  .pricing-grid { display: grid; gap: 16px; }
+  .price-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 26px 22px;
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--gold);
+    box-shadow: 0 18px 40px -20px rgba(226,166,59,0.5);
+  }
+  .price-card .badge {
+    position: absolute;
+    top: -12px;
+    left: 22px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    padding: 5px 11px;
+    border-radius: 999px;
+  }
+  .price-card h3 { font-family: "Manrope"; font-size: 15px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.03em; }
+  .price-card .amount {
+    font-family: "Fraunces", serif;
+    font-size: 30px;
+    margin: 10px 0 2px;
+    color: var(--navy);
+  }
+  .price-card .amount span { font-size: 13px; font-family: "Manrope"; color: var(--ink-faint); font-weight: 600; }
+  .price-card .amount small { font-size: 15px; font-weight: 500; }
+  .price-card ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; }
+  .price-card li { font-size: 13.5px; color: var(--ink-soft); display: flex; gap: 8px; align-items: flex-start; }
+  .price-card li svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; stroke: var(--blue); }
+  .price-card .pick {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    background: var(--cream-2);
+    color: var(--ink);
+    min-height: 44px;
+    line-height: 20px;
+  }
+  .price-card.featured .pick { background: var(--navy); color: #fff; }
+
+  /* ---------- faq ---------- */
+  section.faq { background: var(--cream); }
+  .faq-list { display: grid; gap: 10px; }
+  details.faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 4px 20px;
+  }
+  details.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 0;
+    font-weight: 700;
+    font-size: 14.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary .plus {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Manrope";
+    font-size: 16px;
+    color: var(--blue);
+    transition: transform 0.25s var(--ease);
+  }
+  details.faq-item[open] summary .plus { transform: rotate(45deg); }
+  details.faq-item p {
+    margin: 0 0 16px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ---------- booking form ---------- */
+  section.booking { background: var(--navy); position: relative; overflow: hidden; }
+  section.booking .blueprint {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  section.booking .section-head { position: relative; text-align: center; }
+  section.booking .kicker { color: var(--gold-soft); }
+  section.booking h2.section-title { color: #fff; }
+  section.booking p.section-lede { color: rgba(255,255,255,0.62); margin-left: auto; margin-right: auto; }
+
+  .form-card {
+    position: relative;
+    background: var(--paper);
+    border-radius: var(--radius-lg);
+    padding: 26px 22px 30px;
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.5);
+  }
+
+  label.field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 18px 0 7px;
+    color: var(--ink);
+  }
+  label.field-label:first-child { margin-top: 0; }
+  label.field-label .req { color: var(--blue); }
+  label.field-label .opt { color: var(--ink-faint); font-weight: 500; }
+
+  input[type="text"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--ink);
+    background: var(--cream);
+    min-height: 48px;
+  }
+  textarea { resize: vertical; min-height: 96px; }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(59,99,255,0.14);
+    background: #fff;
+  }
+
+  .options { display: grid; gap: 8px; margin-top: 2px; }
+  .opt-btn {
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 13px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    background: var(--cream);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    font-family: inherit;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  }
+  .opt-btn:active { transform: scale(0.98); }
+  .opt-btn strong { font-size: 14px; font-weight: 700; }
+  .opt-btn span.price { color: var(--ink-faint); font-size: 12px; white-space: nowrap; font-weight: 600; }
+  .opt-btn.active { border-color: var(--blue); background: rgba(59,99,255,0.08); }
+  .opt-btn.active strong { color: var(--blue); }
+
+  .chip-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+  .chip-btn {
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 15px;
+    font-size: 12.5px;
+    font-weight: 700;
+    font-family: inherit;
+    background: var(--cream);
+    color: var(--ink-soft);
+    cursor: pointer;
+    min-height: 40px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.15s;
+  }
+  .chip-btn:active { transform: scale(0.97); }
+  .chip-btn.active { border-color: var(--blue); background: rgba(59,99,255,0.1); color: var(--blue); }
+
+  button.submit {
+    width: 100%;
+    margin-top: 26px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 16px;
+    border-radius: 999px;
+    font-size: 15.5px;
+    font-weight: 800;
+    cursor: pointer;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  button.submit:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(226,166,59,0.55); }
+  button.submit:active { transform: scale(0.98); }
+
+  p.form-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .field-error {
+    color: #d9432f;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+    display: none;
+  }
+  .field-error.show { display: block; }
+
+  /* ---------- footer ---------- */
+  footer.site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 30px 0 40px;
+    font-size: 12.5px;
+    border-top: 1px solid var(--navy-line);
+  }
+  footer.site-footer .brand { justify-content: center; margin-bottom: 8px; }
+
+  /* focus visibility for a11y, gold ring reads on both navy and cream */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="">
+      bikinin.id
+    </a>
+    <div class="nav-links">
+      <a href="#kenapa">Kenapa Kami</a>
+      <a href="#contoh">Contoh Kerja</a>
+      <a href="#harga">Harga</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" href="#booking">Chat WA</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blueprint" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <h1 class="headline">Bikinin website dan app kamu, <em>cepat</em> dan rapi.</h1>
+    <p class="sub">Dari chat pertama sampai website jadi. Custom sesuai kebutuhan, bukan template asal ganti logo.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#booking">Booking konsultasi gratis</a>
+      <a class="btn btn-ghost" href="#harga">Lihat harga dulu</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span class="num">1jt</span><span class="lbl">Harga mulai dari</span></div>
+      <div class="trust-item"><span class="num">1 minggu</span><span class="lbl">Landing page selesai</span></div>
+      <div class="trust-item"><span class="num">100%</span><span class="lbl">Custom, no template</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="why" id="kenapa">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Kenapa bikinin.id</span>
+      <h2 class="section-title">Bukan agency berlapis, langsung sama yang ngerjain.</h2>
+      <p class="section-lede">Empat hal yang bikin kerja sama kamu lebih enak dari cari freelancer sembarangan.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-13h-7z"/></svg></div>
+        <div>
+          <h3>Cepat</h3>
+          <p>Dari chat pertama sampai jadi biasanya hitungan hari, bukan bulan.</p>
+        </div>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/></svg></div>
+        <div>
+          <h3>Custom dari nol</h3>
+          <p>Dibangun sesuai kebutuhan kamu, bukan template yang tinggal ganti logo dan warna.</p>
+        </div>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12h8M8 8h5"/></svg></div>
+        <div>
+          <h3>Harga transparan</h3>
+          <p>Jelas dari awal kamu bayar buat apa, bukan angka yang muncul belakangan.</p>
+        </div>
+      </div>
+      <div class="why-card" data-reveal>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <h3>Gampang dihubungi</h3>
+          <p>Project kamu dipegang langsung sama saya, chat WA dibalas sendiri, bukan tim CS berlapis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="contoh">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Contoh Kerja</span>
+      <h2 class="section-title">Beberapa app & sistem yang pernah dibikin.</h2>
+      <p class="section-lede">Sebagian project client masih proses izin publikasi. Ini project pribadi yang bisa langsung dicoba live, nunjukin kemampuan dari sisi produk & sistem.</p>
+    </div>
+    <div class="work-scroll-wrap" data-reveal>
+    <button class="work-nav prev" id="workPrev" aria-label="Sebelumnya" type="button">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="work-nav next" id="workNext" aria-label="Selanjutnya" type="button">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    <div class="work-scroll" id="workScroll">
+      <a class="mock-card" href="https://web-three-zeta-25.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-ledger">
+          <div class="ml-head">Ledger</div>
+          <div class="ml-stats">
+            <div><span class="lbl">Income</span><span class="val up">Rp 24,6jt</span></div>
+            <div><span class="lbl">Profit</span><span class="val up">+18%</span></div>
+          </div>
+          <svg class="ml-chart" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,26 15,20 30,22 45,12 60,15 75,6 90,9 100,3" fill="none" stroke="#e2a63b" stroke-width="2"/></svg>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">Web App · Finance</span>
+          <h3>Ledger</h3>
+          <p>Dashboard keuangan lintas project — income, expense, profitability</p>
+        </div>
+      </a>
+      <a class="mock-card" href="https://cashflow-sys.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-cashflow">
+          <div class="cf-head"><span class="cf-dot"></span>Cashflow</div>
+          <div class="cf-tiles">
+            <div class="cf-tile"><span class="lbl">Spending</span><span class="val">Rp 1,2jt</span></div>
+            <div class="cf-tile"><span class="lbl">Income</span><span class="val up">Rp 3,4jt</span></div>
+            <div class="cf-tile"><span class="lbl">Balance</span><span class="val up">+Rp 2,2jt</span></div>
+          </div>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">Web App · Finance</span>
+          <h3>Cashflow</h3>
+          <p>Budget, savings goals, laporan, sampai AI insight</p>
+        </div>
+      </a>
+      <a class="mock-card" href="https://portfolio-sys-five.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-portfolio">
+          <div class="pf-row"><span class="pf-ico" style="background:#f7931a">₿</span><span class="pf-name">BTC</span><span class="pf-chg up">+17,9%</span></div>
+          <div class="pf-row"><span class="pf-ico" style="background:#627eea">Ξ</span><span class="pf-name">ETH</span><span class="pf-chg up">+82,0%</span></div>
+          <div class="pf-row"><span class="pf-ico" style="background:#3b63ff">$</span><span class="pf-name">Saham</span><span class="pf-chg down">-2,1%</span></div>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">Web App · Investasi</span>
+          <h3>Portfolio.sys</h3>
+          <p>Tracker saham, crypto, emas — catat transaksi pakai bahasa natural</p>
+        </div>
+      </a>
+      <a class="mock-card" href="https://nsa-dashboard-umber.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-erp">
+          <div class="erp-flow">
+            <span class="erp-step">Quotation</span>
+            <span class="erp-arrow">→</span>
+            <span class="erp-step">Order</span>
+            <span class="erp-arrow">→</span>
+            <span class="erp-step active">Invoice</span>
+          </div>
+          <div class="erp-bars">
+            <div class="erp-bar" style="height:40%"></div>
+            <div class="erp-bar" style="height:65%"></div>
+            <div class="erp-bar" style="height:52%"></div>
+            <div class="erp-bar" style="height:80%"></div>
+            <div class="erp-bar" style="height:60%"></div>
+          </div>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">Sistem Custom · ERP</span>
+          <h3>NSA ERP</h3>
+          <p>Alur dokumen quotation sampai invoice buat sales & purchasing</p>
+        </div>
+      </a>
+      <a class="mock-card" href="https://bima-mu.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-chat">
+          <div class="chat-bubble bot">Nasabah nanya soal premi, coba jawab.</div>
+          <div class="chat-bubble user">Preminya sesuai usia dan masa perlindungan...</div>
+          <div class="chat-bubble bot">Mantap, poin plus: sebut manfaat tambahan.</div>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">AI Chatbot</span>
+          <h3>Sera</h3>
+          <p>Asisten AI buat latihan & onboarding, tema asuransi</p>
+        </div>
+      </a>
+      <a class="mock-card" href="https://better-life-two.vercel.app" target="_blank" rel="noopener">
+        <div class="mock-browser"><i></i><i></i><i></i></div>
+        <div class="mock-screen mock-habit">
+          <div class="hb-row"><span class="hb-check done"></span><span class="hb-name">Drink Water</span><span class="hb-count">8/8</span></div>
+          <div class="hb-row"><span class="hb-check"></span><span class="hb-name">Read 10 Pages</span><span class="hb-count">4/10</span></div>
+          <div class="hb-row"><span class="hb-check done"></span><span class="hb-name">Meditate</span><span class="hb-count">10/10</span></div>
+        </div>
+        <div class="mock-meta">
+          <span class="tag">Web App · Produktivitas</span>
+          <h3>Better Life</h3>
+          <p>Dashboard harian buat habit, agenda, goals, dan mood</p>
+        </div>
+      </a>
+    </div>
+    </div>
+    <p class="work-note">Klik buat lihat langsung live demo-nya. Mau lihat kerjaan client asli, tinggal chat aja, saya kirim lewat WA.</p>
+  </div>
+</section>
+
+<section class="pricing" id="harga">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Harga</span>
+      <h2 class="section-title">Tiga paket, jelas dari awal.</h2>
+      <p class="section-lede">Harga final tergantung kompleksitas fitur dan jumlah revisi, tapi ini titik mulainya.</p>
+      <span class="launch-badge">🔥 Harga launching — buat client-client awal, slot terbatas &amp; bisa naik sewaktu-waktu</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card" data-reveal>
+        <h3>Landing / Profile Site</h3>
+        <p class="amount"><small>Rp</small> 1jt <span>mulai dari</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Satu halaman, desain custom</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tombol chat WA langsung</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Selesai sekitar 1 minggu</li>
+        </ul>
+        <a class="pick" href="#booking" data-pick="Landing / profile site">Pilih paket ini</a>
+      </div>
+      <div class="price-card featured" data-reveal>
+        <span class="badge">Paling laris</span>
+        <h3>Website Bisnis Lengkap</h3>
+        <p class="amount"><small>Rp</small> 2jt <span>mulai dari</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Multi halaman, struktur lengkap</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Form kontak & integrasi WA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Selesai sekitar 2 sampai 3 minggu</li>
+        </ul>
+        <a class="pick" href="#booking" data-pick="Website bisnis lengkap">Pilih paket ini</a>
+      </div>
+      <div class="price-card" data-reveal>
+        <h3>App / Sistem Custom</h3>
+        <p class="amount"><small>Rp</small> 6jt <span>mulai dari</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fitur dan alur sesuai kebutuhan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Dashboard atau sistem pemesanan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Timeline disesuaikan scope</li>
+        </ul>
+        <a class="pick" href="#booking" data-pick="App / sistem custom">Pilih paket ini</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">FAQ</span>
+      <h2 class="section-title">Pertanyaan yang sering muncul.</h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <details class="faq-item">
+        <summary>Berapa lama pengerjaannya? <span class="plus">+</span></summary>
+        <p>Landing page sekitar 1 minggu, website bisnis lengkap 2 sampai 3 minggu, app custom disesuaikan lagi sama scope fiturnya.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Gimana cara bayarnya? <span class="plus">+</span></summary>
+        <p>DP dulu buat mulai kerja, sisanya dibayar setelah selesai dan sebelum serah terima file.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Boleh revisi berapa kali? <span class="plus">+</span></summary>
+        <p>2 kali revisi udah termasuk di harga paket. Revisi tambahan di luar itu dihitung terpisah.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Website atau app-nya nanti punya siapa? <span class="plus">+</span></summary>
+        <p>Sepenuhnya punya kamu. Source code dan akses domain diserahkan setelah pembayaran lunas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kalau butuh perbaikan setelah selesai gimana? <span class="plus">+</span></summary>
+        <p>Ada paket maintenance bulanan buat update dan perbaikan, tinggal ngobrolin pas konsultasi.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="blueprint" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Mulai Sekarang</span>
+      <h2 class="section-title">Booking Konsultasi</h2>
+      <p class="section-lede">Gratis konsultasi awal. Setelah kirim, saya hubungi kamu balik lewat WhatsApp buat konfirmasi dan kasih penawaran.</p>
+    </div>
+
+    <div class="form-card" data-reveal>
+      <form id="bookingForm" novalidate>
+        <label class="field-label" for="nama">Nama kamu <span class="req">*</span></label>
+        <input type="text" id="nama" placeholder="cth. Budi Santoso" required>
+
+        <label class="field-label" for="wa">Nomor WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="wa" placeholder="cth. 0812xxxxxxx" required>
+
+        <label class="field-label" for="bisnis">Nama bisnis/usaha <span class="req">*</span></label>
+        <input type="text" id="bisnis" placeholder="cth. Toko Kue Sederhana" required>
+
+        <label class="field-label">Butuh apa? <span class="req">*</span></label>
+        <div class="options" id="jenisOptions">
+          <button type="button" class="opt-btn" data-value="Landing / profile site">
+            <strong>Landing / profile site</strong>
+            <span class="price">mulai Rp 1jt</span>
+          </button>
+          <button type="button" class="opt-btn" data-value="Website bisnis lengkap">
+            <strong>Website bisnis lengkap</strong>
+            <span class="price">mulai Rp 2jt</span>
+          </button>
+          <button type="button" class="opt-btn" data-value="App / sistem custom">
+            <strong>App / sistem custom</strong>
+            <span class="price">mulai Rp 6jt</span>
+          </button>
+          <button type="button" class="opt-btn" data-value="Belum yakin, mau konsultasi dulu">
+            <strong>Belum yakin</strong>
+            <span class="price">konsultasi dulu</span>
+          </button>
+        </div>
+        <div class="field-error" id="jenisError">Pilih salah satu dulu ya.</div>
+
+        <label class="field-label">Fitur yang kepikiran? <span class="opt">(opsional, boleh pilih beberapa)</span></label>
+        <div class="chip-options" id="fiturOptions">
+          <button type="button" class="chip-btn" data-value="Katalog produk">Katalog produk</button>
+          <button type="button" class="chip-btn" data-value="Galeri foto">Galeri foto</button>
+          <button type="button" class="chip-btn" data-value="Form kontak">Form kontak</button>
+          <button type="button" class="chip-btn" data-value="Booking / reservasi">Booking / reservasi</button>
+          <button type="button" class="chip-btn" data-value="Pemesanan online">Pemesanan online</button>
+          <button type="button" class="chip-btn" data-value="Dashboard admin">Dashboard admin</button>
+          <button type="button" class="chip-btn" data-value="Integrasi pembayaran">Integrasi pembayaran</button>
+          <button type="button" class="chip-btn" data-value="Multi bahasa (ID/EN)">Multi bahasa</button>
+          <button type="button" class="chip-btn" data-value="Blog / artikel">Blog / artikel</button>
+          <button type="button" class="chip-btn" data-value="Peta lokasi">Peta lokasi</button>
+          <button type="button" class="chip-btn" data-value="Login member">Login member</button>
+          <button type="button" class="chip-btn" data-value="Belum tau, mau didiskusiin">Belum tau, mau didiskusiin</button>
+        </div>
+
+        <label class="field-label" for="deadline">Kira-kira kapan butuh selesai? <span class="opt">(opsional)</span></label>
+        <input type="text" id="deadline" placeholder="cth. 2 minggu lagi, atau belum pasti">
+
+        <label class="field-label" for="deskripsi">Ceritain kebutuhannya <span class="req">*</span></label>
+        <textarea id="deskripsi" placeholder="cth. Mau website buat usaha kue rumahan, ada katalog produk dan tombol chat WA" required></textarea>
+
+        <button type="submit" class="submit">Kirim & Lanjut ke WhatsApp</button>
+        <p class="form-note">Klik tombol di atas otomatis buka WhatsApp dengan detail form ini, tinggal kirim ke saya.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="brand"><img src="assets/logo.png" alt=""> bikinin.id</div>
+    Website dan app, cepat dan rapi. Chat langsung di WhatsApp.
+  </div>
+</footer>
+
+<script>
+  const WA_NUMBER = "628163100800";
+
+  const jenisOptions = document.getElementById('jenisOptions');
+  const jenisError = document.getElementById('jenisError');
+  let selectedJenis = "";
+
+  function setJenis(value) {
+    selectedJenis = value;
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.value === value);
+    });
+    jenisError.classList.remove('show');
+  }
+
+  jenisOptions.addEventListener('click', (e) => {
+    const btn = e.target.closest('.opt-btn');
+    if (!btn) return;
+    setJenis(btn.dataset.value);
+  });
+
+  document.querySelectorAll('[data-pick]').forEach(link => {
+    link.addEventListener('click', () => setJenis(link.dataset.pick));
+  });
+
+  const fiturOptions = document.getElementById('fiturOptions');
+  const selectedFitur = new Set();
+
+  fiturOptions.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip-btn');
+    if (!btn) return;
+    const value = btn.dataset.value;
+    if (selectedFitur.has(value)) {
+      selectedFitur.delete(value);
+      btn.classList.remove('active');
+    } else {
+      selectedFitur.add(value);
+      btn.classList.add('active');
+    }
+  });
+
+  document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!selectedJenis) {
+      jenisError.classList.add('show');
+      document.getElementById('jenisOptions').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const nama = document.getElementById('nama').value.trim();
+    const wa = document.getElementById('wa').value.trim();
+    const bisnis = document.getElementById('bisnis').value.trim();
+    const deadline = document.getElementById('deadline').value.trim();
+    const deskripsi = document.getElementById('deskripsi').value.trim();
+
+    let msg = "Halo bikinin.id, saya mau konsultasi:\n\n";
+    msg += `Nama: ${nama}\n`;
+    msg += `No. WA: ${wa}\n`;
+    msg += `Bisnis: ${bisnis}\n`;
+    msg += `Butuh: ${selectedJenis}\n`;
+    if (selectedFitur.size) msg += `Fitur yang diminati: ${Array.from(selectedFitur).join(', ')}\n`;
+    if (deadline) msg += `Target selesai: ${deadline}\n`;
+    msg += `\nKebutuhan:\n${deskripsi}`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.location.href = url;
+  });
+
+  // work carousel: wheel + arrow nav (mouse wheel doesn't map to horizontal scroll by default)
+  const workScroll = document.getElementById('workScroll');
+  const workPrev = document.getElementById('workPrev');
+  const workNext = document.getElementById('workNext');
+  if (workScroll) {
+    workScroll.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        workScroll.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+    const cardStep = () => (workScroll.querySelector('.mock-card')?.offsetWidth || 250) + 14;
+    workPrev.addEventListener('click', () => workScroll.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+    workNext.addEventListener('click', () => workScroll.scrollBy({ left: cardStep(), behavior: 'smooth' }));
+  }
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 4) * 70 + 'ms';
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+</script>
+
+</body>
+</html>

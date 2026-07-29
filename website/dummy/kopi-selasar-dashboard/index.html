@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Pesanan — Kopi Selasar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #2e1e14;
+    --brown-2: #4a3222;
+    --cream: #faf6ef;
+    --paper: #ffffff;
+    --rust: #c4632f;
+    --rust-soft: #f3ddc8;
+    --ink: #241a12;
+    --ink-soft: #6b5c4c;
+    --ink-faint: #9c8d7c;
+    --line: #ece2d2;
+    --green: #2f8f5b;
+    --green-bg: #e6f4ec;
+    --amber: #b8790a;
+    --amber-bg: #fbeed4;
+    --blue: #3b63ff;
+    --blue-bg: #eaefff;
+    --radius-lg: 16px;
+    --radius-md: 11px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Manrope", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; margin: 0; }
+
+  .shell { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    width: 210px;
+    flex-shrink: 0;
+    background: var(--brown);
+    color: rgba(255,255,255,0.8);
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar .brand { display: flex; align-items: center; gap: 8px; color: #fff; font-family: "Fraunces", serif; font-weight: 700; font-size: 15.5px; padding: 0 8px 20px; }
+  .sidebar .brand .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--rust), #e8a97a); display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+  .sidebar nav a {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 13.5px; font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 9px;
+  }
+  .sidebar nav a .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.5; }
+  .sidebar nav a.active { background: rgba(255,255,255,0.1); color: #fff; }
+  .sidebar nav a.active .dot { background: var(--rust); opacity: 1; }
+  .sidebar nav a:hover:not(.active) { color: #fff; }
+  .sidebar .foot { margin-top: auto; font-size: 11px; color: rgba(255,255,255,0.35); padding: 0 8px; }
+
+  .main { flex: 1; min-width: 0; padding: 24px 28px 40px; }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; flex-wrap: wrap; gap: 10px; }
+  .topbar h1 { font-size: 21px; }
+  .topbar .sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; font-family: "Manrope"; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--rust); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; font-family: "Manrope"; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
+  @media (max-width: 720px) { .stat-grid { grid-template-columns: 1fr; } }
+  .stat-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 20px; }
+  .stat-card .lbl { font-size: 12px; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.03em; }
+  .stat-card .val { font-family: "Fraunces", serif; font-size: 26px; margin-top: 8px; }
+  .stat-card .delta { display: inline-block; margin-top: 8px; font-size: 11.5px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+  .stat-card .delta.up { color: var(--green); background: var(--green-bg); }
+  .stat-card .delta.flat { color: var(--ink-soft); background: var(--line); }
+
+  .panel-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 860px) { .panel-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px 22px; }
+  .panel h2 { font-size: 15.5px; font-family: "Manrope"; font-weight: 700; margin-bottom: 14px; }
+
+  table.orders { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.orders th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-faint); font-weight: 700; padding: 0 8px 8px; border-bottom: 1px solid var(--line); }
+  table.orders td { padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  table.orders tr:last-child td { border-bottom: none; }
+  .status { display: inline-flex; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .status.done { color: var(--green); background: var(--green-bg); }
+  .status.progress { color: var(--amber); background: var(--amber-bg); }
+  .status.new { color: var(--blue); background: var(--blue-bg); }
+
+  .bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; padding-top: 10px; }
+  .bars .col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+  .bars .col .bar { width: 100%; background: linear-gradient(180deg, var(--rust), #e8a97a); border-radius: 6px 6px 3px 3px; }
+  .bars .col .day { font-size: 10.5px; color: var(--ink-faint); font-weight: 600; }
+
+  .badge-dummy { position: fixed; bottom: 14px; right: 14px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 700; padding: 7px 12px; border-radius: 999px; opacity: 0.55; z-index: 99; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark">☕</span> Kopi Selasar</div>
+    <nav>
+      <a href="#" class="active"><span class="dot"></span> Dashboard</a>
+      <a href="#"><span class="dot"></span> Pesanan</a>
+      <a href="#"><span class="dot"></span> Menu</a>
+      <a href="#"><span class="dot"></span> Pelanggan</a>
+      <a href="#"><span class="dot"></span> Laporan</a>
+      <a href="#"><span class="dot"></span> Pengaturan</a>
+    </nav>
+    <div class="foot">Dashboard Admin v1.0</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Halo, Admin 👋</h1>
+        <div class="sub">Ringkasan pesanan hari ini — Rabu, 29 Juli 2026</div>
+      </div>
+      <div class="avatar">AD</div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="lbl">Pesanan Hari Ini</div>
+        <div class="val">24</div>
+        <span class="delta up">↑ 12% dari kemarin</span>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">Pendapatan Hari Ini</div>
+        <div class="val">Rp 1,24jt</div>
+        <span class="delta up">↑ 8% dari kemarin</span>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">Pelanggan Baru</div>
+        <div class="val">5</div>
+        <span class="delta flat">Sama seperti kemarin</span>
+      </div>
+    </div>
+
+    <div class="panel-grid">
+      <div class="panel">
+        <h2>Pesanan Terbaru</h2>
+        <table class="orders">
+          <tr><th>Pelanggan</th><th>Menu</th><th>Total</th><th>Status</th></tr>
+          <tr><td>Dinda R.</td><td>Kopi Susu Gula Aren</td><td>Rp 18.000</td><td><span class="status done">Selesai</span></td></tr>
+          <tr><td>Reza P.</td><td>V60 + Roti Bakar</td><td>Rp 37.000</td><td><span class="status progress">Diproses</span></td></tr>
+          <tr><td>Amel S.</td><td>Pisang Goreng x2</td><td>Rp 24.000</td><td><span class="status new">Baru</span></td></tr>
+          <tr><td>Budi T.</td><td>Kopi Susu Gula Aren x3</td><td>Rp 54.000</td><td><span class="status done">Selesai</span></td></tr>
+          <tr><td>Sari W.</td><td>Roti Bakar Cokelat</td><td>Rp 15.000</td><td><span class="status new">Baru</span></td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Pesanan 7 Hari Terakhir</h2>
+        <div class="bars">
+          <div class="col"><div class="bar" style="height:45%"></div><span class="day">Kam</span></div>
+          <div class="col"><div class="bar" style="height:60%"></div><span class="day">Jum</span></div>
+          <div class="col"><div class="bar" style="height:38%"></div><span class="day">Sab</span></div>
+          <div class="col"><div class="bar" style="height:80%"></div><span class="day">Min</span></div>
+          <div class="col"><div class="bar" style="height:52%"></div><span class="day">Sen</span></div>
+          <div class="col"><div class="bar" style="height:66%"></div><span class="day">Sel</span></div>
+          <div class="col"><div class="bar" style="height:95%"></div><span class="day">Rab</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<span class="badge-dummy">Contoh project — dummy</span>
+
+</body>
+</html>
